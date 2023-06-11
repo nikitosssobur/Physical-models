@@ -40,7 +40,7 @@ moving_points_radius = 7                                     #moving points radi
 x_bias, y_bias = 0, 0                 #displacement along the x-axis and along the y-axis of the load point relative to the central point
 
 
-def create_static_edges(space):
+def create_static_edges(space: pm.Space): -> dict
     #Creating fixed edge points
     left_edge_body = pm.Body(static_point_mass, static_point_moment, body_type=pm.Body.STATIC)
     right_edge_body = pm.Body(static_point_mass, static_point_moment, body_type=pm.Body.STATIC)
@@ -53,7 +53,7 @@ def create_static_edges(space):
 edges = create_static_edges(space)
 
 
-def draw_edges(edges):
+def draw_edges(edges: dict): -> None
     #Function draws edges 
     
     for edge in edges['shapes']:
@@ -61,7 +61,7 @@ def draw_edges(edges):
         pg.draw.circle(screen, (0, 0, 50), pos_tuple, static_edges_radius)
 
 
-def add_moving_circles(space, edges):
+def add_moving_circles(space: pm.Space, edges: dict): -> dict
     #Function add center moving points 
     center_point = pm.Body(base_point_mass, base_point_moment, body_type = pm.Body.DYNAMIC)
     center_point.position = pm.Vec2d(x_center_point_coord, y_coord)
@@ -156,7 +156,7 @@ def add_moving_circles(space, edges):
        
     
 
-def draw_circles(circles):
+def draw_circles(circles: dict): -> None
     #Drawing all objects using pygame interface
     for base_shape in circles['base_shapes']:
         pos_tuple = (base_shape.body.position.x, base_shape.body.position.y)
@@ -196,6 +196,7 @@ while True:
     draw_circles(circles)
     space.step(1/FPS)
     if do_snapshots and time.time() > loop_start_time + snapshot_delay: 
+        #This block of code doing snapshots.
         snapshot_timer += clock.get_time()
         if snapshot_timer >= interval * 1000 and snapshot_counter < num_snapshots:
             snapshot_datetime = datetime.datetime.now().strftime("%d%m%Y_%H%M%S") 
