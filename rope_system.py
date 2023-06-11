@@ -32,7 +32,7 @@ static_point_mass, static_point_moment = 1, 0
 moving_points_radius = 7
 
 
-def create_static_edges(space):
+def create_static_edges(space: pm.Space): -> dict
     #Creating 2 fixed points by the edges
     left_edge_body = pm.Body(static_point_mass, static_point_moment, body_type=pm.Body.STATIC)
     right_edge_body = pm.Body(static_point_mass, static_point_moment, body_type=pm.Body.STATIC)
@@ -44,14 +44,14 @@ def create_static_edges(space):
 edges = create_static_edges(space)
 
 
-def draw_edges(edges):
+def draw_edges(edges: dict): -> None
     #Drawing fixed edges on the screen
     for edge in edges['shapes']:
         pos_tuple = edge.body.position.x, edge.body.position.y
         pg.draw.circle(screen, (0, 0, 50), pos_tuple, static_edges_radius)
 
 
-def add_moving_circles(space, edges):
+def add_moving_circles(space: pm.Space, edges: dict): -> tuple
     #Adding central moving points.  
     center_point = pm.Body(center_point_mass, center_point_moment, body_type=pm.Body.DYNAMIC)       
     center_point.position = pm.Vec2d(x_center_point_coord , y_coord)
@@ -90,7 +90,7 @@ def add_moving_circles(space, edges):
     return (shape, weight_point_shape), spring1, spring2, spring3    
     
 
-def draw_circles(circles):
+def draw_circles(circles: tuple): -> None
     #This function draws all moving points and all springs between them.
     
     center_pos_tuple = (circles[0][0].body.position.x, circles[0][0].body.position.y)
