@@ -205,8 +205,14 @@ if __name__ == '__main__':
         pg.display.update()
         clock.tick(FPS)
 
-        
-
+'''
+The future future developments:
+1. Change the behaviour of rods. It must have fixed unchangable length, when programmer press the mouse button.
+2. Change behaviour of balls. Balls shouldn't penetrate each other when we want to change the position of 
+some balls by mouse button.
+3. Also it seems interesting to make velocity of the moving ball depending on the speed of the moving cursor.
+(I don't know how to implement it, but it sounds crazy and exciting:))
+'''
 
 
 
