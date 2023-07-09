@@ -124,9 +124,9 @@ class NewtonPendulum:
         return self.__objects_shapes
     
 
-    def create_model(self, fixed_points_mass = 1.0, fixed_points_moment = 1.0, fixed_points_radius = 4):
+    def create_model(self, fixed_points_radius = 4):
         for x_coord in iter(np.linspace(self.left_edge_point_coords[0], self.right_edge_point_coords[0], self.constr_num)):
-            fixed_point = pm.Body(fixed_points_mass, fixed_points_moment, body_type=pm.Body.STATIC)
+            fixed_point = pm.Body(body_type=pm.Body.STATIC)
             fixed_point.position = (x_coord, self.left_edge_point_coords[1])
             fixed_point_shape = pm.Circle(fixed_point, fixed_points_radius)
             ball = pm.Body(self.ball_mass, self.ball_moment, body_type = pm.Body.DYNAMIC)
@@ -206,12 +206,14 @@ if __name__ == '__main__':
         clock.tick(FPS)
 
 '''
-The future future developments:
+The future developments:
 1. Change the behaviour of rods. It must have fixed unchangable length, when programmer press the mouse button.
-2. Change behaviour of balls. Balls shouldn't penetrate each other when we want to change the position of 
+    1.1 It has sense to add method, which calculate the distance between the mouse click and ball. 
+2. Change the behaviour of balls. Balls shouldn't penetrate each other when we want to change the position of 
 some balls by mouse button.
-3. Also it seems interesting to make velocity of the moving ball depending on the speed of the moving cursor.
+3. Also it seems interesting to make velocity of the moving ball depending on the speed of the moving pressed cursor.
 (I don't know how to implement it, but it sounds crazy and exciting:))
+4. Its will be a good decision to add the ability to set by hand elasticity and friction parameters for balls. 
 '''
 
 
