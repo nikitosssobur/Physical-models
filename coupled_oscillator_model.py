@@ -54,6 +54,8 @@ class CoupledOscillatorModel:
         3. Figure out behaviour of the model when user wants to change position of the point by mouse click.
             3.1 Maybe need to be changed method for calculating displacement of the point.
         4. Add method to GameLoop class for stop the moving     
+        5. Add methdd to CoupledOscillatorModel class for changing distances between fixed points
+            (make this distances configurable by the user) 
     '''
     '''
     def check_parameters(windowspaceinit: WindowSpaceInitializer, left_fixed_edge_coords, right_fixed_edge_coords): 
