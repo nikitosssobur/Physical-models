@@ -2,7 +2,7 @@ import pygame
 import pymunk
 '''
 In this module you can watch the simulation of moving of the usual spring pendulum.
-Try to change initial coodinates of the moving point.
+Try to change initial coordinates of the moving point.
 Do your own experiments:)
 '''
 
