@@ -215,17 +215,3 @@ some balls by mouse button.
 (I don't know how to implement it, but it sounds crazy and exciting:))
 4. Its will be a good decision to add the ability to set by hand elasticity and friction parameters for balls. 
 '''
-
-
-
-
-
-
-
-
-
-
-
-
-
-
